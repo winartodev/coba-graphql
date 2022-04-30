@@ -1,0 +1,31 @@
+type User {
+  ID: Int 
+  Name: string
+}
+
+type Edge {
+  cursor: string 
+  node: User
+}
+
+type PageInfo {
+  endCursor: string
+  hasNextPage: boolean
+}
+
+type UserResult {
+  edges: [edge]
+  pageInfo: PageInfo
+  totalCount: Int
+}
+
+type Query {
+  GetUsers(after: string, first: Int): UserResult
+  GetUserByID(id: Int): User
+}
+
+type Mutation {
+  CreateUser(name: string): User
+  UpdateUser(id: Int, name: string) User
+  DeleteUser(id: Int): Int
+}
